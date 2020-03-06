@@ -22,5 +22,13 @@ namespace NumberWords.Test
       string result = newNumber.TensName();
       Assert.AreEqual("twenty three", result);
     }      
+
+    [TestMethod]
+    public void HundredsName_RecieveLetterNameOfNumber_String()
+    {
+      NumberConvert newNumber = new NumberConvert(123);
+      string result = newNumber.HundredsName();
+      Assert.AreEqual("one hundred twenty three", result);
+    }      
   }
 }

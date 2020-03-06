@@ -40,6 +40,7 @@ namespace NumberWords.Models
       {90, "ninety"},
 
     };
+    public static List<string> masterList = new List<string>(){};
 
     public int Number { get; set; }
 
@@ -48,17 +49,25 @@ namespace NumberWords.Models
       Number = number;
     }
 
-    public string OnesName()
+    public void OnesName()
     {
-      return ones[Number];
+      masterList.Add(ones[Number]);
     }
 
-    public string TensName()
+    public void TensName()
     {
       int onesColumn = Number % 10;
       int tensColumn = Number - onesColumn;
-      return (tens[tensColumn] + " " + ones[onesColumn]);
+      masterList.Add((tens[tensColumn] + " " + ones[onesColumn]));
     }
-
+ 
+    public void HundredsName()
+    {
+      int tensColumnPlusOnes = Number % 100;
+      int onesColumn = tensColumnPlusOnes % 10;
+      int tensColumn = tensColumnPlusOnes - onesColumn;
+      int hundredsColumn = (Number - tensColumnPlusOnes) / 100;
+      masterList.Add((ones[hundredsColumn] + " hundred " + tens[tensColumn] + " " + ones[onesColumn]));
+    }
   }
 }
